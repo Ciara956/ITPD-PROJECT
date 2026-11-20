@@ -1,0 +1,172 @@
+/* --- DESKTOP VIEW (Hide Hamburger) --- */
+@media (min-width: 769px) {
+    .menu-toggle {
+        display: none; /* Hide button on desktop */
+    }
+    .sidebar {
+        transform: translateX(0); /* Always show sidebar */
+    }
+    .sidebar-overlay {
+        display: none !important; /* Never show overlay on desktop */
+    }
+}
+    /* Base Sidebar Styles */
+    .sidebar {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 220px;
+        height: 100vh;
+        background: #2196F3;
+        color: white;
+        padding: 20px;
+        transition: transform 0.3s ease-in-out;
+        z-index: 1000;
+        overflow-y: auto;
+    }
+    
+    /* Content adjustment */
+    .content {
+        margin-left: 220px;
+        padding: 30px;
+        transition: margin-left 0.3s ease-in-out;
+    }
+
+    /* Hamburger Button - Hidden on desktop by default */
+    .menu-toggle {
+        display: none; /* Hidden on desktop */
+        position: fixed;
+        top: 15px;
+        left: 15px;
+        background: #2196F3;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        font-size: 20px;
+        border-radius: 4px;
+        cursor: pointer;
+        z-index: 1001;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+
+    /* Dark Overlay for Mobile */
+    .sidebar-overlay {
+        display: none;
+        position: fixed;
+        top: 0; left: 0; width: 100%; height: 100%;
+        background: rgba(0,0,0,0.5);
+        z-index: 999;
+    }
+
+    /* Table responsive wrapper */
+    .table-responsive {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* --- MOBILE RESPONSIVE DESIGN (Max width 768px) --- */
+    @media (max-width: 768px) {
+        /* Show hamburger on mobile */
+        .menu-toggle {
+            display: block;
+        }
+
+        /* Hide sidebar off-screen by default on mobile */
+        .sidebar {
+            transform: translateX(-100%);
+        }
+        
+        /* Show sidebar when 'active' class is added */
+        .sidebar.active {
+            transform: translateX(0);
+        }
+
+        /* Move content to full width on mobile */
+        .content {
+            margin-left: 0;
+            padding: 20px;
+            padding-top: 70px; /* Space for the fixed menu button */
+        }
+
+        /* Move header content */
+        .top-header {
+            margin-left: 0 !important;
+            padding: 15px !important;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        /* Show overlay when sidebar is active */
+        .sidebar-overlay.active {
+            display: block;
+        }
+
+        /* Make tables responsive - stack on very small screens */
+        table {
+            min-width: 600px; /* Forces horizontal scroll */
+        }
+        
+        /* Adjust stats cards for mobile */
+        .stats-row {
+            grid-template-columns: 1fr !important;
+        }
+        
+        /* Adjust form grids for mobile */
+        .form-grid, .form-row {
+            grid-template-columns: 1fr !important;
+        }
+    }
+    
+    /* Extra small screens */
+    @media (max-width: 480px) {
+        .content {
+            padding: 10px;
+            padding-top: 70px;
+        }
+        
+        table {
+            font-size: 12px;
+        }
+        
+        th, td {
+            padding: 8px 5px;
+        }
+        
+        .btn {
+            padding: 8px 12px;
+            font-size: 12px;
+        }
+    }
+    /* Global table responsive fix */
+.table-responsive {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin-bottom: 20px;
+}
+
+.table-responsive table {
+    min-width: 100%;
+    border-collapse: collapse;
+}
+
+/* Ensure buttons don't get too small on mobile */
+@media (max-width: 768px) {
+    .btn {
+        padding: 8px 12px;
+        font-size: 13px;
+        white-space: nowrap;
+    }
+    
+    /* Stack action buttons vertically on very small screens */
+    td .btn {
+        display: block;
+        margin: 5px 0;
+        text-align: center;
+    }
+}
